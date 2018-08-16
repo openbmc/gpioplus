@@ -2,6 +2,9 @@ ACLOCAL_AMFLAGS = -I m4
 
 # Ignore system headers
 CODE_COVERAGE_IGNORE_PATTERN = '/include/*' '/usr/include/*' '$(includedir)/*'
+# Ignore the real implementation sources for sys
+CODE_COVERAGE_IGNORE_PATTERN += \
+    '$(abs_builddir)/src/gpioplus/internal/sys.*'
 export CODE_COVERAGE_IGNORE_PATTERN
 
 CODE_COVERAGE_LCOV_SHOPTS = $(CODE_COVERAGE_LCOV_SHOPTS_DEFAULT)

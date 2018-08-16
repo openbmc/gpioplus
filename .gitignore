@@ -1,0 +1,45 @@
+# Test suite logs
+*.log
+
+# Code Coverage
+*.gcda
+*.gcno
+*.trs
+*-coverage*
+
+# CC / CXX Compiler
+*.ii
+*.i
+*.o
+*.s
+
+# Libtool
+*.la
+*.lo
+
+# Autotools
+.deps
+.dirstamp
+.libs
+/aclocal.m4
+/autom4te.cache
+/build-aux
+/confdefs.h
+/config.h
+/config.h.in
+/config.h.in~
+/config.log
+/config.status
+/configure
+/m4
+/libtool
+Makefile
+Makefile.in
+/stamp-h1
+
+# Custom generated files
+/src/gpioplus.pc
+
+# Output binaries
+/example/pulse
+/test/gpio

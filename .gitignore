@@ -42,4 +42,4 @@ Makefile.in
 
 # Output binaries
 /example/pulse
-/test/gpio
+/test/internal_fd

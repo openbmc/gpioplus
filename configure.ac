@@ -131,6 +131,9 @@ m4_foreach([vgtool], [valgrind_tool_list],
 # Code coverage
 AX_CODE_COVERAGE
 AM_EXTRA_RECURSIVE_TARGETS([check-code-coverage])
+AS_IF([test "x$CODE_COVERAGE_ENABLED" = "xyes"], [
+    AX_APPEND_COMPILE_FLAGS([-DHAVE_GCOV], [CODE_COVERAGE_CPPFLAGS])
+])
 
 # Append -Werror after doing autoconf compiler checks
 # Otherwise some perfectly valid checks can fail and cause our

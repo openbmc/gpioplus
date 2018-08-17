@@ -4,6 +4,7 @@
 #include <optional>
 #include <stdexcept>
 #include <system_error>
+#include <type_traits>
 
 namespace gpioplus
 {
@@ -46,7 +47,7 @@ static int build(const Chip& chip, uint32_t line_offset,
 Event::Event(const Chip& chip, uint32_t line_offset, HandleFlags handle_flags,
              EventFlags event_flags, const char* consumer_label) :
     fd(build(chip, line_offset, handle_flags, event_flags, consumer_label),
-       chip.getFd().getSys())
+       std::false_type(), chip.getFd().getSys())
 {
 }
 

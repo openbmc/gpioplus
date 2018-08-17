@@ -19,7 +19,21 @@ Fd::Fd(const char* pathname, int flags, const Sys* sys) :
     }
 }
 
-Fd::Fd(int fd, const Sys* sys) : sys(sys), fd(fd)
+static int dup(int oldfd, const Sys* sys)
+{
+    int fd = sys->dup(oldfd);
+    if (fd < 0)
+    {
+        throw std::system_error(errno, std::generic_category(), "Duping FD");
+    }
+    return fd;
+}
+
+Fd::Fd(int fd, const Sys* sys) : sys(sys), fd(dup(fd, sys))
+{
+}
+
+Fd::Fd(int fd, std::false_type, const Sys* sys) : sys(sys), fd(fd)
 {
 }
 
@@ -33,16 +47,6 @@ Fd::~Fd()
     {
         std::abort();
     }
-}
-
-static int dup(int oldfd, const Sys* sys)
-{
-    int fd = sys->dup(oldfd);
-    if (fd < 0)
-    {
-        throw std::system_error(errno, std::generic_category(), "Duping FD");
-    }
-    return fd;
 }
 
 Fd::Fd(const Fd& other) : sys(other.sys), fd(dup(other.fd, sys))

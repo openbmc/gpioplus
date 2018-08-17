@@ -3,6 +3,7 @@
 #include <linux/gpio.h>
 #include <stdexcept>
 #include <system_error>
+#include <type_traits>
 
 namespace gpioplus
 {
@@ -74,7 +75,8 @@ static int build(const Chip& chip, const std::vector<Handle::Line>& lines,
 
 Handle::Handle(const Chip& chip, const std::vector<Line>& lines,
                HandleFlags flags, const char* consumer_label) :
-    fd(build(chip, lines, flags, consumer_label), chip.getFd().getSys()),
+    fd(build(chip, lines, flags, consumer_label), std::false_type(),
+       chip.getFd().getSys()),
     nlines(lines.size())
 {
 }

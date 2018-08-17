@@ -1,5 +1,6 @@
 #pragma once
 #include <gpioplus/internal/sys.hpp>
+#include <type_traits>
 
 namespace gpioplus
 {
@@ -11,6 +12,7 @@ class Fd
   public:
     Fd(const char* pathname, int flags, const Sys* sys);
     Fd(int fd, const Sys* sys);
+    Fd(int fd, std::false_type, const Sys* sys);
     ~Fd();
 
     Fd(const Fd& other);

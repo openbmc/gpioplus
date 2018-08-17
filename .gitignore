@@ -42,4 +42,5 @@ Makefile.in
 
 # Output binaries
 /example/pulse
+/test/chip
 /test/internal_fd

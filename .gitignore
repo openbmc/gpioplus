@@ -43,4 +43,5 @@ Makefile.in
 # Output binaries
 /example/pulse
 /test/chip
+/test/handle
 /test/internal_fd

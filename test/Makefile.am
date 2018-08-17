@@ -12,6 +12,11 @@ chip_SOURCES = chip.cpp
 chip_CPPFLAGS = $(gtest_cppflags)
 chip_LDADD = $(gtest_ldadd)
 
+check_PROGRAMS += event
+event_SOURCES = event.cpp
+event_CPPFLAGS = $(gtest_cppflags)
+event_LDADD = $(gtest_ldadd)
+
 check_PROGRAMS += handle
 handle_SOURCES = handle.cpp
 handle_CPPFLAGS = $(gtest_cppflags)

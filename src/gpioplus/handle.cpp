@@ -8,10 +8,6 @@
 namespace gpioplus
 {
 
-HandleFlags::HandleFlags()
-{
-}
-
 HandleFlags::HandleFlags(LineFlags line_flags) :
     output(line_flags.output), active_low(line_flags.active_low),
     open_drain(line_flags.open_drain), open_source(line_flags.open_source)

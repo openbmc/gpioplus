@@ -14,8 +14,9 @@ struct HandleFlags
     bool open_drain;
     bool open_source;
 
-    HandleFlags();
+    HandleFlags() = default;
     explicit HandleFlags(LineFlags line_flags);
+
     uint32_t toInt() const;
 };
 

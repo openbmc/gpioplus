@@ -1,4 +1,5 @@
 #include <cerrno>
+#include <cstdlib>
 #include <fcntl.h>
 #include <gpioplus/internal/fd.hpp>
 #include <system_error>
@@ -24,7 +25,14 @@ Fd::Fd(int fd, const Sys* sys) : sys(sys), fd(fd)
 
 Fd::~Fd()
 {
-    reset();
+    try
+    {
+        reset();
+    }
+    catch (...)
+    {
+        std::abort();
+    }
 }
 
 static int dup(int oldfd, const Sys* sys)

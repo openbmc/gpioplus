@@ -111,6 +111,14 @@ TEST_F(HandleTest, ConstructTooMany)
                  std::runtime_error);
 }
 
+TEST_F(HandleTest, ConstructLabelTooLong)
+{
+    const size_t large_size = sizeof(
+        reinterpret_cast<struct gpiohandle_request*>(NULL)->consumer_label);
+    EXPECT_THROW(Handle(*chip, {}, HandleFlags(), std::string(large_size, '1')),
+                 std::invalid_argument);
+}
+
 TEST_F(HandleTest, ConstructError)
 {
     const std::string label{"error"};

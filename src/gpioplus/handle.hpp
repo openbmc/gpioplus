@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <gpioplus/chip.hpp>
 #include <gpioplus/internal/fd.hpp>
+#include <string_view>
 #include <vector>
 
 namespace gpioplus
@@ -29,7 +30,7 @@ class Handle
         uint8_t default_value;
     };
     Handle(const Chip& chip, const std::vector<Line>& lines, HandleFlags flags,
-           const char* consumer_label);
+           std::string_view consumer_label);
 
     const internal::Fd& getFd() const;
 

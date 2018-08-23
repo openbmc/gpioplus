@@ -25,14 +25,18 @@ uint32_t EventFlags::toInt() const
 
 static int build(const Chip& chip, uint32_t line_offset,
                  HandleFlags handle_flags, EventFlags event_flags,
-                 const char* consumer_label)
+                 std::string_view consumer_label)
 {
     struct gpioevent_request req;
     memset(&req, 0, sizeof(req));
     req.lineoffset = line_offset;
     req.handleflags = handle_flags.toInt();
     req.eventflags = event_flags.toInt();
-    strncpy(req.consumer_label, consumer_label, sizeof(req.consumer_label) - 1);
+    if (consumer_label.size() >= sizeof(req.consumer_label))
+    {
+        throw std::invalid_argument("consumer_label");
+    }
+    memcpy(req.consumer_label, consumer_label.data(), consumer_label.size());
 
     int r = chip.getFd().getSys()->gpio_get_lineevent(*chip.getFd(), &req);
     if (r < 0)
@@ -45,7 +49,7 @@ static int build(const Chip& chip, uint32_t line_offset,
 }
 
 Event::Event(const Chip& chip, uint32_t line_offset, HandleFlags handle_flags,
-             EventFlags event_flags, const char* consumer_label) :
+             EventFlags event_flags, std::string_view consumer_label) :
     fd(build(chip, line_offset, handle_flags, event_flags, consumer_label),
        std::false_type(), chip.getFd().getSys())
 {

@@ -83,6 +83,15 @@ TEST_F(EventTest, ConstructSuccess)
     EXPECT_CALL(mock, close(event_fd)).WillOnce(Return(0));
 }
 
+TEST_F(EventTest, ConstructLabelTooLong)
+{
+    const size_t large_size = sizeof(
+        reinterpret_cast<struct gpioevent_request*>(NULL)->consumer_label);
+    EXPECT_THROW(Event(*chip, 0, HandleFlags(), EventFlags(),
+                       std::string(large_size, '1')),
+                 std::invalid_argument);
+}
+
 TEST_F(EventTest, ConstructFailure)
 {
     const uint32_t line_offset = 3;

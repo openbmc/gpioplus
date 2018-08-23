@@ -4,6 +4,7 @@
 #include <gpioplus/handle.hpp>
 #include <gpioplus/internal/fd.hpp>
 #include <optional>
+#include <string_view>
 
 namespace gpioplus
 {
@@ -20,7 +21,7 @@ class Event
 {
   public:
     Event(const Chip& chip, uint32_t line_offset, HandleFlags handle_flags,
-          EventFlags event_flags, const char* consumer_label);
+          EventFlags event_flags, std::string_view consumer_label);
 
     const internal::Fd& getFd() const;
 

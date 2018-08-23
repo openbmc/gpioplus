@@ -41,7 +41,7 @@ uint32_t HandleFlags::toInt() const
 }
 
 static int build(const Chip& chip, const std::vector<Handle::Line>& lines,
-                 HandleFlags flags, const char* consumer_label)
+                 HandleFlags flags, std::string_view consumer_label)
 {
     if (lines.size() > GPIOHANDLES_MAX)
     {
@@ -56,7 +56,11 @@ static int build(const Chip& chip, const std::vector<Handle::Line>& lines,
         req.default_values[i] = lines[i].default_value;
     }
     req.flags = flags.toInt();
-    strncpy(req.consumer_label, consumer_label, sizeof(req.consumer_label) - 1);
+    if (consumer_label.size() >= sizeof(req.consumer_label))
+    {
+        throw std::invalid_argument("consumer_label");
+    }
+    memcpy(req.consumer_label, consumer_label.data(), consumer_label.size());
     req.lines = lines.size();
 
     int r = chip.getFd().getSys()->gpio_get_linehandle(*chip.getFd(), &req);
@@ -70,7 +74,7 @@ static int build(const Chip& chip, const std::vector<Handle::Line>& lines,
 }
 
 Handle::Handle(const Chip& chip, const std::vector<Line>& lines,
-               HandleFlags flags, const char* consumer_label) :
+               HandleFlags flags, std::string_view consumer_label) :
     fd(build(chip, lines, flags, consumer_label), std::false_type(),
        chip.getFd().getSys()),
     nlines(lines.size())

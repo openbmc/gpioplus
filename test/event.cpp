@@ -152,7 +152,7 @@ TEST_F(EventMethodTest, ReadSuccess)
         .WillOnce(DoAll(WithArg<1>(WriteStruct(ret)), Return(sizeof(ret))));
     std::optional<Event::Data> data = event->read();
     EXPECT_TRUE(data);
-    EXPECT_EQ(ret.timestamp, data->timestamp);
+    EXPECT_EQ(ret.timestamp, data->timestamp.count());
     EXPECT_EQ(ret.id, data->id);
 }
 

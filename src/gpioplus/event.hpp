@@ -1,9 +1,11 @@
 #pragma once
+#include <chrono>
 #include <cstdint>
 #include <gpioplus/chip.hpp>
 #include <gpioplus/handle.hpp>
 #include <gpioplus/internal/fd.hpp>
 #include <optional>
+#include <ratio>
 #include <string_view>
 
 namespace gpioplus
@@ -52,8 +54,8 @@ class Event
     /** @brief Event data read from the gpio line */
     struct Data
     {
-        /** @brief The estimate of the time the event occurred in nanoseconds */
-        uint64_t timestamp;
+        /** @brief The estimate of the time the event occurred */
+        std::chrono::duration<uint64_t, std::nano> timestamp;
         /** @brief The identifier of the event */
         uint32_t id;
     };

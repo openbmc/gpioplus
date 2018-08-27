@@ -77,8 +77,7 @@ std::optional<Event::Data> Event::read() const
     {
         throw std::runtime_error("Event read didn't get enough data");
     }
-
-    return Data{data.timestamp, data.id};
+    return Data{decltype(Data::timestamp)(data.timestamp), data.id};
 }
 
 uint8_t Event::getValue() const

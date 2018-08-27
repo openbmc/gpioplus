@@ -7,6 +7,9 @@ namespace gpioplus
 namespace internal
 {
 
+/** @class Sys
+ *  @brief Overridable direct syscall interface
+ */
 class Sys
 {
   public:
@@ -34,6 +37,10 @@ class Sys
                                    struct gpioevent_request* request) const = 0;
 };
 
+/** @class SysImpl
+ *  @brief syscall concrete implementation
+ *  @details Passes through all calls to the normal linux syscalls
+ */
 class SysImpl : public Sys
 {
   public:
@@ -56,6 +63,7 @@ class SysImpl : public Sys
                            struct gpioevent_request* request) const override;
 };
 
+/** @brief Default instantiation of sys */
 extern SysImpl sys_impl;
 
 } // namespace internal

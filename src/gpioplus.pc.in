@@ -6,7 +6,5 @@ includedir=@includedir@
 Name: gpioplus
 Description: C++ wrapper around the Linux userspace GPIO API
 Version: @VERSION@
-Requires: @AX_PACKAGE_REQUIRES@
-Requires.private: @AX_PACKAGE_REQUIRES_PRIVATE@
 Cflags: -I${includedir}
 Libs: -L${libdir} -lgpioplus

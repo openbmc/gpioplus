@@ -34,6 +34,9 @@ class Event
 {
   public:
     /** @brief Creates a new gpio line event handler
+     *         The underlying implementation of the event is independent of
+     *         the provided chip object. It is safe to destroy any of the
+     *         provided inputs while this event is alive.
      *
      *  @param[in] chip           - The gpio chip which provides the events
      *  @param[in] line_offset    - The offset of the line generating events

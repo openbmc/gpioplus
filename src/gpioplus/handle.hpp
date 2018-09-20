@@ -52,6 +52,9 @@ class Handle
     };
 
     /** @brief Creates a new gpio handle
+     *         The underlying implementation of the handle is independent of
+     *         the provided chip object. It is safe to destroy any of the
+     *         provided inputs while this handle is alive.
      *
      *  @param[in] chip           - The gpio chip which provides the handle
      *  @param[in] lines          - A collection of lines the handle provides

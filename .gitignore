@@ -45,4 +45,4 @@ Makefile.in
 /test/chip
 /test/event
 /test/handle
-/test/internal_fd
+/test/internal/fd

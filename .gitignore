@@ -46,3 +46,4 @@ Makefile.in
 /test/event
 /test/handle
 /test/internal/fd
+/test/utility/aspeed

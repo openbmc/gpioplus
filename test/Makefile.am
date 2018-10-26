@@ -26,3 +26,8 @@ check_PROGRAMS += internal/fd
 internal_fd_SOURCES = internal/fd.cpp
 internal_fd_CPPFLAGS = $(gtest_cppflags)
 internal_fd_LDADD = $(gtest_ldadd)
+
+check_PROGRAMS += utility/aspeed
+utility_aspeed_SOURCES = utility/aspeed.cpp
+utility_aspeed_CPPFLAGS = $(gtest_cppflags)
+utility_aspeed_LDADD = $(gtest_ldadd)

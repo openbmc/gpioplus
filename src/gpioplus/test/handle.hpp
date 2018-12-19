@@ -10,8 +10,6 @@ namespace test
 class HandleMock : public HandleInterface
 {
   public:
-    virtual ~HandleMock() = default;
-
     MOCK_CONST_METHOD0(getValues, std::vector<uint8_t>());
     MOCK_CONST_METHOD1(getValues, void(std::vector<uint8_t>&));
     MOCK_CONST_METHOD1(setValues, void(const std::vector<uint8_t>&));

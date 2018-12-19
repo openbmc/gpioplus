@@ -26,11 +26,33 @@ struct EventFlags
     uint32_t toInt() const;
 };
 
-/** @class EVent
+/** @class EventInterface
+ *  @brief Interface used for providing gpio events
+ */
+class EventInterface
+{
+  public:
+    virtual ~EventInterface() = default;
+
+    /** @brief Event data read from the gpio line */
+    struct Data
+    {
+        /** @brief The estimate of the time the event occurred */
+        std::chrono::duration<uint64_t, std::nano> timestamp;
+        /** @brief The identifier of the event */
+        uint32_t id;
+    };
+
+    virtual const internal::Fd& getFd() const = 0;
+    virtual std::optional<Data> read() const = 0;
+    virtual uint8_t getValue() const = 0;
+};
+
+/** @class Event
  *  @brief Handle to a gpio line event
  *  @details Provides a c++ interface for gpio event operations
  */
-class Event
+class Event : public EventInterface
 {
   public:
     /** @brief Creates a new gpio line event handler
@@ -52,16 +74,7 @@ class Event
      *
      *  @return The gpio handle file descriptor
      */
-    const internal::Fd& getFd() const;
-
-    /** @brief Event data read from the gpio line */
-    struct Data
-    {
-        /** @brief The estimate of the time the event occurred */
-        std::chrono::duration<uint64_t, std::nano> timestamp;
-        /** @brief The identifier of the event */
-        uint32_t id;
-    };
+    const internal::Fd& getFd() const override;
 
     /** @brief Reads an event from the event file descriptor
      *         Follows the read(2) semantics of the underyling file descriptor
@@ -70,14 +83,14 @@ class Event
      *  @return The value of the event or std::nullopt if the file descriptor
      *          is non-blocking and no event has occurred
      */
-    std::optional<Data> read() const;
+    std::optional<Data> read() const override;
 
     /** @brief Get the current value of the associated line
      *
      *  @throws std::system_error for underlying syscall failures
      *  @return The value of the gpio line
      */
-    uint8_t getValue() const;
+    uint8_t getValue() const override;
 
   private:
     internal::Fd fd;

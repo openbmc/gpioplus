@@ -35,11 +35,25 @@ struct HandleFlags
     uint32_t toInt() const;
 };
 
+/** @class HandleInterface
+ *  @brief Handle interface to provide a set of methods required to exist in
+ * derived objects.
+ */
+class HandleInterface
+{
+  public:
+    virtual ~HandleInterface() = default;
+
+    virtual std::vector<uint8_t> getValues() const = 0;
+    virtual void getValues(std::vector<uint8_t>& values) const = 0;
+    virtual void setValues(const std::vector<uint8_t>& values) const = 0;
+};
+
 /** @class Handle
  *  @brief Handle to a gpio line handle
  *  @details Provides a c++ interface for gpio handle operations
  */
-class Handle
+class Handle : public HandleInterface
 {
   public:
     /** @brief Per line information used to construct a handle */
@@ -76,21 +90,21 @@ class Handle
      *  @throws std::system_error for underlying syscall failures
      *  @return The values of the gpio lines
      */
-    std::vector<uint8_t> getValues() const;
+    std::vector<uint8_t> getValues() const override;
 
     /** @brief Gets the current values of all associated lines
      *
      *  @param[out] values - The values of the gpio lines
      *  @throws std::system_error for underlying syscall failures
      */
-    void getValues(std::vector<uint8_t>& values) const;
+    void getValues(std::vector<uint8_t>& values) const override;
 
     /** @brief Sets the current values of all associated lines
      *
      *  @param[in] values - The new values of the gpio lines
      *  @throws std::system_error for underlying syscall failures
      */
-    void setValues(const std::vector<uint8_t>& values) const;
+    void setValues(const std::vector<uint8_t>& values) const override;
 
   private:
     internal::Fd fd;

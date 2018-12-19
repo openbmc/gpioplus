@@ -20,5 +20,6 @@ nobase_include_HEADERS += gpioplus/internal/sys.hpp
 libgpioplus_la_SOURCES += gpioplus/internal/sys.cpp
 
 nobase_include_HEADERS += gpioplus/test/sys.hpp
+nobase_include_HEADERS += gpioplus/test/handle.hpp
 
 nobase_include_HEADERS += gpioplus/utility/aspeed.hpp

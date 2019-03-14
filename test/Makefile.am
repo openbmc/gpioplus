@@ -1,5 +1,4 @@
 @VALGRIND_CHECK_RULES@
-@CODE_COVERAGE_RULES@
 
 gtest_cppflags = $(AM_CPPFLAGS) $(GTEST_CFLAGS) $(GMOCK_CFLAGS)
 gtest_ldadd = $(GPIOPLUS_LIBS) $(GTEST_LIBS) $(GMOCK_LIBS) -lgmock_main

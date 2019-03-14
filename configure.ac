@@ -5,7 +5,7 @@ AC_LANG([C++])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_CONFIG_AUX_DIR([build-aux])
-AM_INIT_AUTOMAKE([nostdinc foreign subdir-objects -Wall -Werror dist-xz tar-ustar])
+AM_INIT_AUTOMAKE([nostdinc foreign subdir-objects -Wall -Wno-portability -Werror dist-xz tar-ustar])
 AM_SILENT_RULES([yes])
 
 # Make sure the default CFLAGS of `-O2 -g` don't override CODE_COVERAGE_CFLAGS
@@ -130,10 +130,13 @@ m4_foreach([vgtool], [valgrind_tool_list],
 
 # Code coverage
 AX_CODE_COVERAGE
-AM_EXTRA_RECURSIVE_TARGETS([check-code-coverage])
 AS_IF([test "x$CODE_COVERAGE_ENABLED" = "xyes"], [
     AX_APPEND_COMPILE_FLAGS([-DHAVE_GCOV], [CODE_COVERAGE_CPPFLAGS])
 ])
+m4_ifdef([_AX_CODE_COVERAGE_RULES],
+    [AM_CONDITIONAL(AUTOCONF_CODE_COVERAGE_2019_01_06, [true])],
+    [AM_CONDITIONAL(AUTOCONF_CODE_COVERAGE_2019_01_06, [false])])
+AX_ADD_AM_MACRO_STATIC([])
 
 # Append -Werror after doing autoconf compiler checks
 # Otherwise some perfectly valid checks can fail and cause our

@@ -16,7 +16,7 @@ import('pkgconfig').generate(
   name: 'gpioplus',
   description: 'C++ systemd event wrapper',
   version: meson.project_version(),
-)
+  libraries: gpioplus)
 
 install_headers(
   'gpioplus/chip.hpp',

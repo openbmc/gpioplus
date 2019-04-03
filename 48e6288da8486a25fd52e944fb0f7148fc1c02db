@@ -1,0 +1,9 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+1: Benjamin Fair <benjaminfair@google.com>
+Code-Review+2: William A. Kennington III <wak@google.com>
+Submitted-by: William A. Kennington III <wak@google.com>
+Submitted-at: Wed, 03 Apr 2019 22:52:05 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/gpioplus/+/20113
+Project: openbmc/gpioplus
+Branch: refs/heads/master

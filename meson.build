@@ -6,8 +6,6 @@ project('gpioplus', 'cpp',
           'cpp_std=c++17'
         ])
 
-includes = include_directories('src')
-
 subdir('src')
 
 build_tests = get_option('tests')

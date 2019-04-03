@@ -1,4 +1,6 @@
-gpioplus = library(
+gpioplus_headers = include_directories('.')
+
+gpioplus_lib = library(
   'gpioplus',
   [
     'gpioplus/chip.cpp',
@@ -7,10 +9,15 @@ gpioplus = library(
     'gpioplus/internal/fd.cpp',
     'gpioplus/internal/sys.cpp',
   ],
-  include_directories: includes,
+  include_directories: gpioplus_headers,
   implicit_include_directories: false,
   version: meson.project_version(),
   install: true)
+
+gpioplus = declare_dependency(
+  include_directories: gpioplus_headers,
+  link_with: gpioplus_lib,
+)
 
 import('pkgconfig').generate(
   name: 'gpioplus',

@@ -3,10 +3,6 @@
 gpioplus is a c++ wrapper around the linux gpio ioctl interface.
 It aims to provide c++ ergonomics to the usage.
 
-## Dependencies
-
-Test cases require google{test,mock}, valgrind, and lcov.
-
 ## Building
 For a standard release build, you want something like:
 ```

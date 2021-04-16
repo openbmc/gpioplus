@@ -14,16 +14,15 @@ gpioplus_lib = library(
   version: meson.project_version(),
   install: true)
 
-gpioplus = declare_dependency(
+gpioplus_dep = declare_dependency(
   include_directories: gpioplus_headers,
   link_with: gpioplus_lib,
 )
 
 import('pkgconfig').generate(
-  name: 'gpioplus',
+  gpioplus_lib,
   description: 'C++ systemd event wrapper',
-  version: meson.project_version(),
-  libraries: gpioplus)
+  version: meson.project_version())
 
 install_headers(
   'gpioplus/chip.hpp',

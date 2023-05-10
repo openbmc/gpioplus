@@ -1,4 +1,5 @@
 #include <gpioplus/utility/aspeed.hpp>
+
 #include <gtest/gtest.h>
 
 namespace gpioplus

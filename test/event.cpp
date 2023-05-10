@@ -1,15 +1,18 @@
-#include <cerrno>
-#include <cstring>
-#include <gmock/gmock.h>
+#include <linux/gpio.h>
+
 #include <gpioplus/event.hpp>
 #include <gpioplus/test/sys.hpp>
-#include <gtest/gtest.h>
-#include <linux/gpio.h>
+
+#include <cerrno>
+#include <cstring>
 #include <memory>
 #include <optional>
 #include <stdexcept>
 #include <string>
 #include <system_error>
+
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 namespace gpioplus
 {

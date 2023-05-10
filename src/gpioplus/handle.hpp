@@ -1,7 +1,8 @@
 #pragma once
-#include <cstdint>
 #include <gpioplus/chip.hpp>
 #include <gpioplus/internal/fd.hpp>
+
+#include <cstdint>
 #include <string_view>
 #include <vector>
 

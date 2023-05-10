@@ -1,5 +1,6 @@
 #pragma once
 #include <gpioplus/internal/sys.hpp>
+
 #include <type_traits>
 
 namespace gpioplus

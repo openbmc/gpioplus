@@ -1,7 +1,8 @@
 #pragma once
-#include <cstdint>
 #include <gpioplus/internal/fd.hpp>
 #include <gpioplus/internal/sys.hpp>
+
+#include <cstdint>
 #include <string>
 
 namespace gpioplus

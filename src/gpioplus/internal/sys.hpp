@@ -1,6 +1,7 @@
 #pragma once
-#include <cstddef>
 #include <linux/gpio.h>
+
+#include <cstddef>
 
 namespace gpioplus
 {

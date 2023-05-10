@@ -1,8 +1,9 @@
 #include <fcntl.h>
-#include <gpioplus/internal/sys.hpp>
 #include <linux/gpio.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
+
+#include <gpioplus/internal/sys.hpp>
 
 namespace gpioplus
 {

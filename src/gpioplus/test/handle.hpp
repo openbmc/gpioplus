@@ -1,6 +1,7 @@
 #pragma once
-#include <gmock/gmock.h>
 #include <gpioplus/handle.hpp>
+
+#include <gmock/gmock.h>
 
 namespace gpioplus
 {

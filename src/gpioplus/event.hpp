@@ -1,9 +1,10 @@
 #pragma once
-#include <chrono>
-#include <cstdint>
 #include <gpioplus/chip.hpp>
 #include <gpioplus/handle.hpp>
 #include <gpioplus/internal/fd.hpp>
+
+#include <chrono>
+#include <cstdint>
 #include <optional>
 #include <ratio>
 #include <string_view>

@@ -1,6 +1,8 @@
-#include <cstring>
-#include <gpioplus/event.hpp>
 #include <linux/gpio.h>
+
+#include <gpioplus/event.hpp>
+
+#include <cstring>
 #include <optional>
 #include <stdexcept>
 #include <system_error>
@@ -52,8 +54,7 @@ Event::Event(const Chip& chip, uint32_t line_offset, HandleFlags handle_flags,
              EventFlags event_flags, std::string_view consumer_label) :
     fd(build(chip, line_offset, handle_flags, event_flags, consumer_label),
        std::false_type(), chip.getFd().getSys())
-{
-}
+{}
 
 const internal::Fd& Event::getFd() const
 {

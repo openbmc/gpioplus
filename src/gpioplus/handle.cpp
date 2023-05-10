@@ -1,6 +1,8 @@
-#include <cstring>
-#include <gpioplus/handle.hpp>
 #include <linux/gpio.h>
+
+#include <gpioplus/handle.hpp>
+
+#include <cstring>
 #include <stdexcept>
 #include <system_error>
 #include <type_traits>
@@ -11,8 +13,7 @@ namespace gpioplus
 HandleFlags::HandleFlags(LineFlags line_flags) :
     output(line_flags.output), active_low(line_flags.active_low),
     open_drain(line_flags.open_drain), open_source(line_flags.open_source)
-{
-}
+{}
 
 uint32_t HandleFlags::toInt() const
 {
@@ -78,8 +79,7 @@ Handle::Handle(const Chip& chip, const std::vector<Line>& lines,
     fd(build(chip, lines, flags, consumer_label), std::false_type(),
        chip.getFd().getSys()),
     nlines(lines.size())
-{
-}
+{}
 
 const internal::Fd& Handle::getFd() const
 {

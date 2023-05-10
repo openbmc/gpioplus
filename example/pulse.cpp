@@ -1,6 +1,7 @@
-#include <exception>
 #include <gpioplus/chip.hpp>
 #include <gpioplus/handle.hpp>
+
+#include <exception>
 #include <string>
 
 int main(int argc, char* argv[])

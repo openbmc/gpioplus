@@ -1,7 +1,9 @@
-#include <cstring>
 #include <fcntl.h>
-#include <gpioplus/chip.hpp>
 #include <linux/gpio.h>
+
+#include <gpioplus/chip.hpp>
+
+#include <cstring>
 #include <string>
 #include <system_error>
 
@@ -13,14 +15,12 @@ LineFlags::LineFlags(uint32_t flags) :
     active_low(flags & GPIOLINE_FLAG_ACTIVE_LOW),
     open_drain(flags & GPIOLINE_FLAG_OPEN_DRAIN),
     open_source(flags & GPIOLINE_FLAG_OPEN_SOURCE)
-{
-}
+{}
 
 Chip::Chip(unsigned id, const internal::Sys* sys) :
     fd(std::string{"/dev/gpiochip"}.append(std::to_string(id)).c_str(),
        O_RDONLY | O_CLOEXEC, sys)
-{
-}
+{}
 
 ChipInfo Chip::getChipInfo() const
 {

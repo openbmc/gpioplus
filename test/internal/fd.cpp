@@ -1,16 +1,19 @@
-#include <cerrno>
-#include <cstring>
 #include <fcntl.h>
-#include <gmock/gmock.h>
-#include <gpioplus/internal/fd.hpp>
-#include <gpioplus/test/sys.hpp>
-#include <gtest/gtest.h>
-#include <memory>
 #include <signal.h>
 #include <sys/prctl.h>
+
+#include <gpioplus/internal/fd.hpp>
+#include <gpioplus/test/sys.hpp>
+
+#include <cerrno>
+#include <cstring>
+#include <memory>
 #include <system_error>
 #include <type_traits>
 #include <utility>
+
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 #ifdef HAVE_GCOV
 // Needed for the abrt test

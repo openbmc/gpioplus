@@ -1,14 +1,17 @@
+#include <fcntl.h>
+#include <linux/gpio.h>
+
+#include <gpioplus/chip.hpp>
+#include <gpioplus/test/sys.hpp>
+
 #include <cerrno>
 #include <cstdint>
 #include <cstring>
-#include <fcntl.h>
-#include <gmock/gmock.h>
-#include <gpioplus/chip.hpp>
-#include <gpioplus/test/sys.hpp>
-#include <gtest/gtest.h>
-#include <linux/gpio.h>
 #include <memory>
 #include <system_error>
+
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 namespace gpioplus
 {

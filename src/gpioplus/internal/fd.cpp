@@ -1,7 +1,9 @@
+#include <fcntl.h>
+
+#include <gpioplus/internal/fd.hpp>
+
 #include <cerrno>
 #include <cstdlib>
-#include <fcntl.h>
-#include <gpioplus/internal/fd.hpp>
 #include <system_error>
 #include <utility>
 
@@ -29,13 +31,9 @@ static int dup(int oldfd, const Sys* sys)
     return fd;
 }
 
-Fd::Fd(int fd, const Sys* sys) : sys(sys), fd(dup(fd, sys))
-{
-}
+Fd::Fd(int fd, const Sys* sys) : sys(sys), fd(dup(fd, sys)) {}
 
-Fd::Fd(int fd, std::false_type, const Sys* sys) : sys(sys), fd(fd)
-{
-}
+Fd::Fd(int fd, std::false_type, const Sys* sys) : sys(sys), fd(fd) {}
 
 Fd::~Fd()
 {
@@ -49,9 +47,7 @@ Fd::~Fd()
     }
 }
 
-Fd::Fd(const Fd& other) : sys(other.sys), fd(dup(other.fd, sys))
-{
-}
+Fd::Fd(const Fd& other) : sys(other.sys), fd(dup(other.fd, sys)) {}
 
 Fd& Fd::operator=(const Fd& other)
 {

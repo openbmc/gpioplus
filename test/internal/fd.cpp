@@ -179,7 +179,9 @@ TEST_F(FdTest, ConstructMove)
 TEST_F(FdTest, OperatorMoveSame)
 {
     Fd fd(expected_fd, std::false_type(), &mock);
-    fd = std::move(fd);
+    // Test move operator but newer compilers complain about move-to-self
+    // so use an explicit r-value ref cast to do the same.
+    fd = static_cast<Fd&&>(fd);
     EXPECT_EQ(expected_fd, *fd);
 
     EXPECT_CALL(mock, close(expected_fd)).WillOnce(Return(0));

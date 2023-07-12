@@ -1,0 +1,7 @@
+Code-Review+2: William A. Kennington III <wak@google.com>
+Verified+1: Patrick Williams <patrick@stwcx.xyz>
+Submitted-by: Patrick Williams <patrick@stwcx.xyz>
+Submitted-at: Wed, 12 Jul 2023 23:30:15 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/gpioplus/+/64909
+Project: openbmc/gpioplus
+Branch: refs/heads/master

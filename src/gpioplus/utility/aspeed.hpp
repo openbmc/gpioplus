@@ -1,6 +1,7 @@
 #pragma once
 #include <stdexcept>
 #include <string_view>
+#include <cstdint>
 
 namespace gpioplus
 {

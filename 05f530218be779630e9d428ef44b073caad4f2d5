@@ -1,0 +1,7 @@
+Code-Review+2: William A. Kennington III <wak@google.com>
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Submitted-by: George Liu <liuxiwei@ieisystem.com>
+Submitted-at: Wed, 01 Nov 2023 01:54:24 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/gpioplus/+/65954
+Project: openbmc/gpioplus
+Branch: refs/heads/master

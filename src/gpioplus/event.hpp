@@ -77,7 +77,7 @@ class Event : public EventInterface
     const internal::Fd& getFd() const;
 
     /** @brief Reads an event from the event file descriptor
-     *         Follows the read(2) semantics of the underyling file descriptor
+     *         Follows the read(2) semantics of the underlying file descriptor
      *
      *  @throws std::system_error for underlying syscall failures
      *  @return The value of the event or std::nullopt if the file descriptor

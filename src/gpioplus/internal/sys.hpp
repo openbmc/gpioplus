@@ -23,17 +23,14 @@ class Sys
     virtual int fcntl_setfl(int fd, int flags) const = 0;
     virtual int fcntl_getfl(int fd) const = 0;
 
-    virtual int
-        gpiohandle_get_line_values(int fd,
-                                   struct gpiohandle_data* data) const = 0;
-    virtual int
-        gpiohandle_set_line_values(int fd,
-                                   struct gpiohandle_data* data) const = 0;
+    virtual int gpiohandle_get_line_values(
+        int fd, struct gpiohandle_data* data) const = 0;
+    virtual int gpiohandle_set_line_values(
+        int fd, struct gpiohandle_data* data) const = 0;
     virtual int gpio_get_chipinfo(int fd, struct gpiochip_info* info) const = 0;
     virtual int gpio_get_lineinfo(int fd, struct gpioline_info* info) const = 0;
-    virtual int
-        gpio_get_linehandle(int fd,
-                            struct gpiohandle_request* request) const = 0;
+    virtual int gpio_get_linehandle(
+        int fd, struct gpiohandle_request* request) const = 0;
     virtual int gpio_get_lineevent(int fd,
                                    struct gpioevent_request* request) const = 0;
 };

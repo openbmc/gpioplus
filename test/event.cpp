@@ -107,9 +107,9 @@ TEST_F(EventTest, ConstructFailure)
     struct gpioevent_request req;
     EXPECT_CALL(mock, gpio_get_lineevent(chip_fd, testing::_))
         .WillOnce(DoAll(SaveArgPointee<1>(&req), Return(-EINVAL)));
-    EXPECT_THROW(
-        Event(*chip, line_offset, handle_flags, event_flags, label.c_str()),
-        std::system_error);
+    EXPECT_THROW(Event(*chip, line_offset, handle_flags, event_flags,
+                       label.c_str()),
+                 std::system_error);
 
     EXPECT_EQ(line_offset, req.lineoffset);
     EXPECT_EQ(GPIOHANDLE_REQUEST_INPUT, req.handleflags);

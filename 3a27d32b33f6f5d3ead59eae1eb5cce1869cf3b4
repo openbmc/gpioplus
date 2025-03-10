@@ -1,0 +1,8 @@
+Code-Review+2: William A. Kennington III <wak@google.com>
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Submitted-by: William A. Kennington III <wak@google.com>
+Submitted-at: Mon, 10 Mar 2025 19:23:27 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/gpioplus/+/73187
+Comments-Total: 4
+Project: openbmc/gpioplus
+Branch: refs/heads/master

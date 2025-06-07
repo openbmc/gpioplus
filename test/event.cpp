@@ -154,6 +154,11 @@ TEST_F(EventMethodTest, ReadSuccess)
     EXPECT_CALL(mock, read(event_fd, testing::_, sizeof(struct gpioevent_data)))
         .WillOnce(DoAll(WithArg<1>(WriteStruct(ret)), Return(sizeof(ret))));
     std::optional<Event::Data> data = event->read();
+    if (!data.has_value())
+    {
+        GTEST_FAIL() << "Expected data to have value";
+        return;
+    }
     EXPECT_TRUE(data);
     EXPECT_EQ(ret.timestamp, data->timestamp.count());
     EXPECT_EQ(ret.id, data->id);

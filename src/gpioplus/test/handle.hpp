@@ -11,9 +11,9 @@ namespace test
 class HandleMock : public HandleInterface
 {
   public:
-    MOCK_CONST_METHOD0(getValues, std::vector<uint8_t>());
-    MOCK_CONST_METHOD1(getValues, void(std::vector<uint8_t>&));
-    MOCK_CONST_METHOD1(setValues, void(const std::vector<uint8_t>&));
+    MOCK_METHOD(std::vector<uint8_t>, getValues, (), (const));
+    MOCK_METHOD(void, getValues, (std::vector<uint8_t>&), (const));
+    MOCK_METHOD(void, setValues, (const std::vector<uint8_t>&), (const));
 };
 
 } // namespace test

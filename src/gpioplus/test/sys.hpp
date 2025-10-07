@@ -11,22 +11,23 @@ namespace test
 class SysMock : public internal::Sys
 {
   public:
-    MOCK_CONST_METHOD2(open, int(const char*, int));
-    MOCK_CONST_METHOD1(dup, int(int));
-    MOCK_CONST_METHOD1(close, int(int));
-    MOCK_CONST_METHOD3(read, int(int, void*, size_t));
-    MOCK_CONST_METHOD2(fcntl_setfl, int(int, int));
-    MOCK_CONST_METHOD1(fcntl_getfl, int(int));
+    MOCK_METHOD(int, open, (const char*, int), (const));
+    MOCK_METHOD(int, dup, (int), (const));
+    MOCK_METHOD(int, close, (int), (const));
+    MOCK_METHOD(int, read, (int, void*, size_t), (const));
+    MOCK_METHOD(int, fcntl_setfl, (int, int), (const));
+    MOCK_METHOD(int, fcntl_getfl, (int), (const));
 
-    MOCK_CONST_METHOD2(gpiohandle_get_line_values,
-                       int(int, struct gpiohandle_data*));
-    MOCK_CONST_METHOD2(gpiohandle_set_line_values,
-                       int(int, struct gpiohandle_data*));
-    MOCK_CONST_METHOD2(gpio_get_chipinfo, int(int, struct gpiochip_info*));
-    MOCK_CONST_METHOD2(gpio_get_lineinfo, int(int, struct gpioline_info*));
-    MOCK_CONST_METHOD2(gpio_get_linehandle,
-                       int(int, struct gpiohandle_request*));
-    MOCK_CONST_METHOD2(gpio_get_lineevent, int(int, struct gpioevent_request*));
+    MOCK_METHOD(int, gpiohandle_get_line_values, (int, struct gpiohandle_data*),
+                (const));
+    MOCK_METHOD(int, gpiohandle_set_line_values, (int, struct gpiohandle_data*),
+                (const));
+    MOCK_METHOD(int, gpio_get_chipinfo, (int, struct gpiochip_info*), (const));
+    MOCK_METHOD(int, gpio_get_lineinfo, (int, struct gpioline_info*), (const));
+    MOCK_METHOD(int, gpio_get_linehandle, (int, struct gpiohandle_request*),
+                (const));
+    MOCK_METHOD(int, gpio_get_lineevent, (int, struct gpioevent_request*),
+                (const));
 };
 
 } // namespace test

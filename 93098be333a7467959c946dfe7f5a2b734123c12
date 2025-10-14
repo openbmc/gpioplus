@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d3df114_3122b038",
+        "filename": "test/event.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000188
+      },
+      "writtenOn": "2025-10-14T22:36:52Z",
+      "side": 1,
+      "message": "Just change the above to `ASSERT_TRUE`. I didn\u0027t care about this error because it gets caught by EXPECT regardless of the corruption.",
+      "revId": "93098be333a7467959c946dfe7f5a2b734123c12",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}

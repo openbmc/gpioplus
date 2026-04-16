@@ -70,6 +70,24 @@
       "parentUuid": "578dfafa_8a9c7397",
       "revId": "93098be333a7467959c946dfe7f5a2b734123c12",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e40ed20b_71a4d7da",
+        "filename": "test/event.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000188
+      },
+      "writtenOn": "2026-04-16T05:58:35Z",
+      "side": 1,
+      "message": "Does clang-tidy not have annotations for that? I guess your workaround is fine here.",
+      "parentUuid": "ceacce97_0864832c",
+      "revId": "93098be333a7467959c946dfe7f5a2b734123c12",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
